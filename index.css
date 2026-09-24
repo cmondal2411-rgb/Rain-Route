@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+:root {
+  --background: 44 36% 95%;
+  --foreground: 205 37% 18%;
+  --card: 45 40% 98%;
+  --card-foreground: 205 37% 18%;
+  --popover: 45 40% 98%;
+  --popover-foreground: 205 37% 18%;
+  --primary: 193 48% 28%;
+  --primary-foreground: 45 40% 98%;
+  --secondary: 39 56% 87%;
+  --secondary-foreground: 205 37% 18%;
+  --muted: 42 27% 89%;
+  --muted-foreground: 201 14% 43%;
+  --accent: 13 78% 64%;
+  --accent-foreground: 205 37% 18%;
+  --destructive: 2 65% 52%;
+  --destructive-foreground: 45 40% 98%;
+  --border: 40 24% 80%;
+  --input: 40 24% 80%;
+  --ring: 193 48% 28%;
+  --radius: 0.9rem;
+  --app-font-sans: 'Manrope', sans-serif;
+  --app-font-serif: Georgia, serif;
+  --app-font-mono: 'DM Mono', monospace;
+  --chart-1: 193 48% 28%;
+  --chart-2: 13 78% 64%;
+  --chart-3: 44 64% 55%;
+  --chart-4: 154 38% 45%;
+  --chart-5: 205 48% 52%;
+}
+
+.dark {
+  --background: 205 37% 12%;
+  --foreground: 44 36% 95%;
+  --card: 205 32% 16%;
+  --card-foreground: 44 36% 95%;
+  --popover: 205 32% 16%;
+  --popover-foreground: 44 36% 95%;
+  --primary: 183 53% 55%;
+  --primary-foreground: 205 37% 12%;
+  --secondary: 205 23% 24%;
+  --secondary-foreground: 44 36% 95%;
+  --muted: 205 23% 24%;
+  --muted-foreground: 42 19% 69%;
+  --accent: 13 78% 64%;
+  --accent-foreground: 205 37% 12%;
+  --destructive: 2 65% 52%;
+  --destructive-foreground: 44 36% 95%;
+  --border: 205 20% 29%;
+  --input: 205 20% 29%;
+  --ring: 183 53% 55%;
+}
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --font-sans: var(--app-font-sans);
+  --font-mono: var(--app-font-mono);
+}
+
+@layer base {
+  * { @apply border-border; }
+  body { @apply bg-background text-foreground antialiased; font-family: var(--app-font-sans); }
+  button, input, select, textarea { font: inherit; }
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes drift { from { transform: translateY(0); } to { transform: translateY(5px); } }
+@keyframes dash { to { stroke-dashoffset: -24; } }
+.animate-rise { animation: rise .5s ease-out both; }
+.route-dash { animation: dash 1.8s linear infinite; }
+.rain-drop { animation: drift 2.2s ease-in-out infinite alternate; }
+.paper-grain::after { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: .035; z-index: 50; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"); }
+.font-display { font-family: 'Space Grotesk', sans-serif; }
+.font-mono-ui { font-family: var(--app-font-mono); }
+.shadow-paper { box-shadow: 0 12px 32px rgba(42, 70, 74, .08), 0 2px 0 rgba(42, 70, 74, .08); }
+.grid-paper { background-image: linear-gradient(hsl(var(--border) / .3) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--border) / .3) 1px, transparent 1px); background-size: 28px 28px; }
